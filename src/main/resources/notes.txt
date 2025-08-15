@@ -1,0 +1,5 @@
+
+1. use openAPI 3 to create rest spec
+2. use TDD
+3. create design in draw.io referring notes
+4.

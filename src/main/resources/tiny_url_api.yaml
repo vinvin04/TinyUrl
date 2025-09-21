@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: Tiny Url
+  description: |-
+    A simple url shorterner API:
+    - get full url for short url
+    - create short url for long url
+  version: 1.0-SNAPSHOT
+servers:
+  - url: https://testenvironment.org/api/v1
+  - url: https://prodenvironment.org/api/v1
+tags:
+  - name: urls
+    description: a mapping between short and long urls
+paths:
+  /shortlink/{shortUrl}:
+    get:
+      tags:
+        - shortlink
+      summary: Get long url
+      description: Get long url for the given short url
+      operationId: getShortLink
+      parameters:
+        - name: shortUrl
+          in: path
+          description: shortUrl for a longUrl
+          required: true
+          schema:
+            type: string
+      responses:
+        302:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shortlink'
+        404:
+          description: Shortlink not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShortlinksNotFoundError'
+  /shortlink/create:
+    post:
+      tags:
+        - shortlinks
+      summary: create a Shortlink mapping
+      description: create a short url for given long url
+      operationId: createShortLink
+      requestBody:
+        description: LongUrl
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateResponse'
+        400:
+          description: BadRequest LongUrl not provided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LongUrlNotProvidedError'
+components:
+  schemas:
+    Shortlink:
+      type: object
+      properties:
+        longUrl:
+          type: string
+    ShortlinksNotFoundError:
+      type: object
+      properties:
+        message:
+          type: string
+    CreateRequest:
+      type: object
+      properties:
+        longUrl:
+          type: string
+    CreateResponse:
+      type: object
+      properties:
+        shortUrl:
+          type: string
+    LongUrlNotProvidedError:
+      type: object
+      properties:
+        message:
+          type: string

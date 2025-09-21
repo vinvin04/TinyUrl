@@ -1,5 +1,23 @@
-
-1. use openAPI 3 to create rest spec
+Todo
+1. use openAPI 3 to create rest spec - done
 2. use TDD
-3. create design in draw.io referring notes
-4.
+3. create design in draw.io referring notes - done
+4. use liquibase for db - done
+4. use supabase as db - done
+5. write repo code for db
+6. write api impl and post, get
+7. use twitter shorturl id
+8.
+authentication and authorization
+7.
+
+prompt :
+do not give direct answer, give hints to make me think
+
+db model
+
+table:TinyUrl
+id long
+short_url string
+long_url string
+

@@ -12,9 +12,10 @@ import lombok.Data;
 public class TinyUrl {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shortUrl_seq_generator")
-    @SequenceGenerator(name = "shortUrl_seq_generator", sequenceName = "SHORT_URL_SEQ", initialValue = 1000000,
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq_generator")
+    @SequenceGenerator(name = "id_seq_generator", sequenceName = "ID_SEQ", initialValue = 1000000,
             allocationSize = 1)
-    private long shortUrl;
+    private Long id;
+    private String shortUrl;
     private String longUrl;
 }

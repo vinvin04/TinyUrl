@@ -7,6 +7,7 @@ Todo
 6. write repo code for db done
 7. write api impl and post, get  done
 8. use hash + collision detection - done
+redis - docker run -d --name redis-bloom -p 6379:6379 redislabs/rebloom:latest
 9. use twitter shorturl id
 10. authentication and authorization
 7.
